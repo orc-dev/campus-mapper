@@ -4,8 +4,6 @@
  *
  * @author Xin Cai
  */
-
-
 class Text {
     /** Usage message */
     final static String USAGE = "\n" +

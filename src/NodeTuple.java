@@ -5,8 +5,6 @@
  * @see    Graph
  * @author Xin Cai
  */
-
- 
 class NodeTuple implements Comparable<NodeTuple> {
     int curr;    // Id of current node
     int prev;    // Id of previous node

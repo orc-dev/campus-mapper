@@ -6,8 +6,6 @@
  *
  * @author Xin Cai
  */
-
-
 class MapCell {
     char ch = '\0';
     String prefix = "";

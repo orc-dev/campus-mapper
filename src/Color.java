@@ -5,7 +5,6 @@
  *
  * @author Xin Cai
  */
-
  enum Color {
     /** Instance of the Color enum, associated with 256-color mode */
     RESET("\u001B[0m"),
