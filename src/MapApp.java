@@ -48,8 +48,9 @@ public class MapApp {
         mapBoard          = reader.getMapBoard();
         borderTable       = reader.getBorderTable();
         
+        // Init fields for this app
         renderedMap       = new HashMap<>();
-        renderedLst      = new HashMap<>();
+        renderedLst       = new HashMap<>();
         displayListAndMap = true;
         runProgram        = true;
 
