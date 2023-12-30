@@ -16,6 +16,18 @@ Additionally, users can highlight buildings offering specific services such as d
 - Facilitated user interaction through *Scanner and parsing* techniques.
 - Implemented *Dijkstra's shortest path algorithm* for computing optimal routes between buildings in the campus mapper.
 
+### Project Structure
+```
+MapApp.java
+|-- Building.java
+|-- DataReader.java
+|-- Graph.java
+|    |-- NodeTuple.java
+|-- Color.java
+|-- Text.java
+|-- MapCell.java
+```
+
 ### Usage
 - Clone the whole repo to Linux environment
 - Run script `run_mapper.sh` to compile and run the app
