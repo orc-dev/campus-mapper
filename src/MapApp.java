@@ -122,11 +122,6 @@ public class MapApp {
             path.forEach(id -> sj.add("  " + buildingTable.get(id)));
             System.out.println(sj.toString());
 
-            // System.out.print(Color.C056.val);
-            // path.forEach(id -> 
-            //     System.out.println("  " + buildingTable.get(id)));
-            // System.out.print(Color.RESET.val);
-
         } catch (NumberFormatException | 
                  NullPointerException  |
                  ArrayIndexOutOfBoundsException e) 
