@@ -23,7 +23,7 @@ interface LineReader {
 }
 
 class FileReader {
-    private Graph buildingGraph;
+    private Graph campusGraph;
     private HashMap<Integer, Building> buildingTable;
     private ArrayList<String> campusMapRows;
     private MapCell[][] mapBoard;
@@ -37,7 +37,7 @@ class FileReader {
      * @throws IOException
      */
     public FileReader(String datFile, String mapFile) {
-        this.buildingGraph = new Graph();
+        this.campusGraph = new Graph();
         this.buildingTable = new HashMap<>();
         this.campusMapRows = new ArrayList<>();
         this.borderTable   = new HashMap<>();
@@ -114,7 +114,7 @@ class FileReader {
             for (i += 3; i < tokens.length; i += 2) {
                 int neib = Integer.parseInt(tokens[i]);
                 int cost = Integer.parseInt(tokens[i + 1]);
-                this.buildingGraph.addEdge(id, neib, cost);
+                this.campusGraph.addEdge(id, neib, cost);
             }
         } catch (NumberFormatException e) {
             // handle exception
@@ -229,8 +229,8 @@ class FileReader {
     /**
      * @return A graph represents topology of campus building.
      */
-    public Graph getBuildingGraph() {
-        return this.buildingGraph;
+    public Graph getCampusGraph() {
+        return this.campusGraph;
     }
 
     /**

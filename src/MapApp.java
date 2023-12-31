@@ -33,7 +33,7 @@ public class MapApp {
     private static HashMap<String, String> renderedMap;
     private static HashMap<String, String> renderedLst;
     private static String input;
-    private static boolean displayListAndMap;
+    private static boolean defaultDisplay;
     private static boolean runProgram;
 
     public static void main(String[] args) {
@@ -43,16 +43,16 @@ public class MapApp {
         final FileReader reader = new FileReader(DAT_FILE, MAP_FILE);
         
         // Access Data
-        campusGraph       = reader.getBuildingGraph();
-        buildingTable     = reader.getBuildingTable();
-        mapBoard          = reader.getMapBoard();
-        borderTable       = reader.getBorderTable();
+        campusGraph   = reader.getCampusGraph();
+        buildingTable = reader.getBuildingTable();
+        mapBoard      = reader.getMapBoard();
+        borderTable   = reader.getBorderTable();
         
         // Init fields for this app
-        renderedMap       = new HashMap<>();
-        renderedLst       = new HashMap<>();
-        displayListAndMap = true;
-        runProgram        = true;
+        renderedMap    = new HashMap<>();
+        renderedLst    = new HashMap<>();
+        defaultDisplay = true;
+        runProgram     = true;
 
         // construct and render campus map
         renderedMap.put("default", renderMap());
@@ -67,13 +67,13 @@ public class MapApp {
                 System.out.println(Text.SEPARATOR);
             
             // Display building list, campus map and usage
-            if (displayListAndMap) {
+            if (defaultDisplay) {
                 System.out.println(Text.BUILDING_LIST);
                 System.out.println(renderedLst.get("default"));
                 System.out.println(Text.CAMPUS_MAP);
                 System.out.println(renderedMap.get("default"));
                 System.out.println(Text.USAGE);
-                displayListAndMap = false;
+                defaultDisplay = false;
             }
 
             // Read user's input
@@ -85,7 +85,7 @@ public class MapApp {
             String[] cmd = input.toLowerCase().trim().split("\\s+");
             switch(cmd[0]) {
                 case "x" -> runProgram = false;
-                case "m" -> displayListAndMap = true;
+                case "m" -> defaultDisplay = true;
                 case "d", "l", "p" -> displayMapWithService(cmd[0]);
                 default -> displayShortestPath(cmd);
             }
