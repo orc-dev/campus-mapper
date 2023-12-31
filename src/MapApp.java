@@ -116,9 +116,7 @@ public class MapApp {
             System.out.println(renderMap());
 
             // Display a list of building in the shortest path
-            StringJoiner sj = new StringJoiner(
-                "\n", Color.C056.val, Color.RESET.val);
-
+            StringJoiner sj = new StringJoiner("\n", Color.C056.val, Color.RESET.val);
             path.forEach(id -> sj.add("  " + buildingTable.get(id)));
             System.out.println(sj.toString());
 
@@ -211,9 +209,7 @@ public class MapApp {
         renderedMap.put(serviceType, renderMap());
 
         // Create and cache the list string in renderedLst
-        StringJoiner sj = new StringJoiner(
-            "\n", Color.C111.val, Color.RESET.val);
-        
+        StringJoiner sj = new StringJoiner("\n", Color.C111.val, Color.RESET.val);
         selected.forEach(id -> sj.add("  " + buildingTable.get(id)));
         renderedLst.put(serviceType, sj.toString());
 
