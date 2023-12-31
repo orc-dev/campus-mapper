@@ -6,9 +6,8 @@
  * @author Xin Cai
  */
  enum Color {
-    /** Instance of the Color enum, associated with 256-color mode */
+    /** Instance of the Color, associated with 256-color mode */
     RESET("\u001B[0m"),
-
     C020("\033[38;5;20m"),
     C037("\033[38;5;37m"),
     C043("\033[38;5;43m"),
@@ -18,6 +17,7 @@
     C160("\033[38;5;160m"),
     C222("\033[38;5;222m");
     
+    /** ANSI escape seqence */
     public final String val;
 
     Color(String val) {
@@ -30,8 +30,7 @@
     protected static void displayColorBoard() {
         for (Color color : Color.values()) {
             if (color != Color.RESET)
-                System.out.println(
-                    color.val + color.name() + Color.RESET.val);
+                System.out.println(color.val + color.name() + Color.RESET.val);
         }
     }
 }
