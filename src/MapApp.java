@@ -149,10 +149,10 @@ public class MapApp {
         for (int i = 0; i < dim[0]; ++i) {
             for (int j = i; j < size; j += dim[0]) {
                 Building temp = buildingTable.get(j);
-                builder.append(temp.toString())
-                       .append(" ".repeat(gap + dim[1] - temp.name.length()));
+                int spacesNum = gap + dim[1] - temp.name.length();
+                builder.append(temp.toString() + " ".repeat(spacesNum));
             }
-            builder.append('\n');
+            builder.append("\n");
         }
         return builder.toString();
     }
