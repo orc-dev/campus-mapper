@@ -86,8 +86,10 @@ public class MapApp {
             switch(cmd[0]) {
                 case "x" -> runProgram = false;
                 case "m" -> defaultDisplay = true;
-                case "d", "l", "p" -> displayMapWithService(cmd[0]);
-                default -> displayShortestPath(cmd);
+                case "d" -> displayMapWithService("Dining", 0b001);
+                case "l" -> displayMapWithService("Library", 0b010);
+                case "p" -> displayMapWithService("Parking", 0b100);
+                default  -> displayShortestPath(cmd);
             }
         }
 
@@ -172,49 +174,36 @@ public class MapApp {
      * map with specified services are highlighted and puts it into the 
      * buffer and call this function again to display it.
      * 
-     * @param serviceType A string represents the services.
+     * @param service service name
+     * @param bitmask bitmask of that service
      */
-    private static void displayMapWithService(String serviceType) {
+    private static void displayMapWithService(String service, int bitmask) {
         // check if this request is cached
-        if (renderedMap.containsKey(serviceType)) {
-            String service = switch(serviceType) {
-                case "d" -> "Dining";
-                case "l" -> "Library";
-                case "p" -> "Parking";
-                default  -> "Default";
-            };
+        if (renderedMap.containsKey(service)) {
             System.out.println(Text.selectedService(service));
-            System.out.println(renderedMap.get(serviceType));
-            System.out.println(renderedLst.get(serviceType));
+            System.out.println(renderedMap.get(service));
+            System.out.println(renderedLst.get(service));
             return;
         }
-
-        // Map serviceType to a bitmask
-        int serviceBit = switch(serviceType) {
-            case "d" -> 0b001;
-            case "l" -> 0b010;
-            case "p" -> 0b100;
-            default  -> 0b111;
-        };
 
         // Selects buildings with specified service
         final ArrayList<Integer> selected = new ArrayList<>();
         for (int id = 0; id < buildingTable.size(); ++id) {
-            if (buildingTable.get(id).hasService(serviceBit)) 
+            if (buildingTable.get(id).hasService(bitmask)) 
                 selected.add(id);
         }
 
         // Create and cache the map string in renderedMap
         updateMap(selected, Color.C111);
-        renderedMap.put(serviceType, renderMap());
+        renderedMap.put(service, renderMap());
 
         // Create and cache the list string in renderedLst
         StringJoiner sj = new StringJoiner("\n", Color.C111.val, Color.RESET.val);
         selected.forEach(id -> sj.add("  " + buildingTable.get(id)));
-        renderedLst.put(serviceType, sj.toString());
+        renderedLst.put(service, sj.toString());
 
         // call this function again to display
-        displayMapWithService(serviceType);
+        displayMapWithService(service, bitmask);
     }
 
     /**
