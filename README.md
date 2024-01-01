@@ -10,7 +10,7 @@ Additionally, users can highlight buildings offering specific services such as d
 ![service_selection](img/service_select.png)
 
 ### Data Structure and Algorithm Features
-- Utilized *classes, static classes, enums, and interfaces* for code organization.
+- Utilized *class, record, enum, and interface* for code organization.
 - Employed *HashMap, PriorityQueue, ArrayList, and Arrays* to efficiently manage data and implement algorithms.
 - Incorporated *ANSI escape sequences* for enhanced console output formatting.
 - Facilitated user interaction through *Scanner and parsing* techniques.
