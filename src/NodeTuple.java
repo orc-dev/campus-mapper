@@ -1,15 +1,15 @@
 /**
  * @file   NodeTuple.java
- * @brief  This is a lightweight helper class used in the Graph class for
- *         implementing the Dijkstra's shortest path algorithm.
+ * @brief  This is record class used in the Graph class for implementing the 
+ *         Dijkstra's shortest path algorithm. It stores current node id, 
+ *         some previous node id and the total cost on the path from the 
+ *         source node to the current node.
+ * 
  * @see    Graph
  * @author Xin Cai
  */
-class NodeTuple implements Comparable<NodeTuple> {
-    int curr;    // Id of current node
-    int prev;    // Id of previous node
-    int cost;    // Cost on edge between these two nodes
-
+record NodeTuple(int curr, int prev, int cost) implements Comparable<NodeTuple> {
+    
     /**
      * Construct a new NodeTuple.
      * 
@@ -17,13 +17,9 @@ class NodeTuple implements Comparable<NodeTuple> {
      * @param prev Id of previous node
      * @param cost Cost on edge between these two nodes
      */
-    public NodeTuple(int curr, int prev, int cost) {
-        if (cost < 0) {
+    public NodeTuple {
+        if (cost < 0)
             throw new IllegalArgumentException("Cost cannot be negative.");
-        }
-        this.curr = curr;
-        this.prev = prev;
-        this.cost = cost;
     }
 
     /**

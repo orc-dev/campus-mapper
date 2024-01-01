@@ -50,20 +50,20 @@ public class Graph {
             NodeTuple node = costQueue.poll();
             
             // duplication check
-            if (result.containsKey(node.curr))
+            if (result.containsKey(node.curr()))
                 continue;
 
-            result.put(node.curr, node.prev);
+            result.put(node.curr(), node.prev());
             
             // termination check
-            if (node.curr == sid)
+            if (node.curr() == sid)
                 break;
             
             // organize next level of nodes
-            this.nodeNeibsMap.get(node.curr).forEach((neib, cost) -> {
+            this.nodeNeibsMap.get(node.curr()).forEach((neib, cost) -> {
                 if (!result.containsKey(neib)) {
                     costQueue.add(
-                        new NodeTuple(neib, node.curr, node.cost + cost));
+                        new NodeTuple(neib, node.curr(), node.cost() + cost));
                 }
             });
         }
